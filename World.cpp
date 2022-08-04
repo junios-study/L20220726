@@ -1,9 +1,17 @@
 #include "World.h"
-#include <list>
-#include <array>
-#include <algorithm>
-#include <map>
-#include <string>
+#include "Actor.h"
+
+World::World()
+{
+}
+
+World::~World()
+{
+	for (auto Current : ActorList)
+	{
+		DestoryActor(Current);
+	}
+}
 
 void World::SpawnActor(Actor* NewActor)
 {
@@ -13,16 +21,24 @@ void World::SpawnActor(Actor* NewActor)
 
 std::vector<Actor*>::iterator World::DestoryActor(Actor* DeletedActor)
 {
-	//std::list<int> IntList;
-	//std::list<int> IntList;
-	//std::array<int, 10> IntArray;
-	//std::map<std::string, int> FloatMap;
-	//find(IntList.begin(), IntList.end(), 1);
-	//find(IntArray.begin(), IntArray.end(), 1);
-	//find(FloatMap.begin(), FloatMap.end(), 1);
-
 	return ActorList.erase(find(ActorList.begin(),
 		ActorList.end(), DeletedActor));
+}
+
+void World::Tick()
+{
+	for (Actor* MyActor : ActorList)
+	{
+		MyActor->Tick();
+	}
+}
+
+void World::Render()
+{
+	for (Actor* MyActor : ActorList)
+	{
+		MyActor->Render();
+	}
 }
 //[][][][]
 //[]    []         []      []

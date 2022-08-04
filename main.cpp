@@ -1,27 +1,15 @@
-#include <iostream>
-#include "Actor.h"
-#include "Player.h"
-#include "Monster.h"
-#include "World.h"
-#include <list>
-#include <vector>
-#include <stack>
+#include "Engine.h"
 
+
+//Simple is best.
 int main()
 {
-	World* MyWorld = new World();
+	Engine* MyEngine = new Engine();
 
-	MyWorld->SpawnActor(new Player());
-	MyWorld->SpawnActor(new Monster());
+	MyEngine->LoadMap();
+	MyEngine->Run();
 
-	//range for
-	for (Actor* MyActor : MyWorld->ActorList)
-	{
-		MyActor->Render();
-	}
-
-
-	delete MyWorld;
+	delete MyEngine;
 
 	return 0;
 }

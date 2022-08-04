@@ -8,16 +8,19 @@ public:
 	Actor() : Shape(' ')
 	{
 	}
+
+	Actor(int NewX, int NewY) : Shape(' ')
+	{
+		Location.X = NewX;
+		Location.Y = NewY;
+	}
 	virtual ~Actor() {}
 
-	//has a 
 	Vector2D Location;
 
 	char Shape;
 
-	//interface °­Á¦
-	//pure virtual function
-	//virtual void Render() = 0;
+	virtual void Tick();
 	virtual void Render();
 
 };

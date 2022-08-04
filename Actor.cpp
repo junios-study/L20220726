@@ -2,6 +2,10 @@
 #include <iostream>
 #include <Windows.h>
 
+void Actor::Tick()
+{
+}
+
 void Actor::Render()
 {
     COORD Cur;

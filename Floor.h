@@ -8,6 +8,13 @@ public:
 	{
 		Shape = ' ';
 	}
+	Floor(int NewX, int NewY)
+	{
+		Shape = ' ';
+
+		Location.X = NewX;
+		Location.Y = NewY;
+	}
 	virtual ~Floor() {}
 };
 

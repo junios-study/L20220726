@@ -10,6 +10,15 @@ public:
 		Location.X = 6;
 		Location.Y = 6;
 	}
+
+
+	Monster(int NewX, int NewY)
+	{
+		Shape = 'M';
+
+		Location.X = NewX;
+		Location.Y = NewY;
+	}
 	virtual ~Monster() {}
 };
 

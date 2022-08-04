@@ -12,6 +12,14 @@ public:
 		Location.Y = 1;
 	}
 
+	Player(int NewX, int NewY)
+	{
+		Shape = 'P';
+
+		Location.X = NewX;
+		Location.Y = NewY;
+	}
+
 	virtual ~Player() {}
 
 	//virtual void Render() override {} 
