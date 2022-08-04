@@ -7,10 +7,12 @@ public:
 	Floor() 
 	{
 		Shape = ' ';
+		SortOrder = 1;
 	}
 	Floor(int NewX, int NewY)
 	{
 		Shape = ' ';
+		SortOrder = 1;
 
 		Location.X = NewX;
 		Location.Y = NewY;

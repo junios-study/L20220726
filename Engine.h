@@ -1,15 +1,32 @@
 #pragma once
+#include <string>
+
 class World;
+class Actor;
 
 class Engine
 {
-public:
+protected:
 	Engine();
+
+	static Engine* Instance;
+
+public:
 	virtual ~Engine();
+
+	static Engine* GetInstance()
+	{
+		if (Instance == nullptr)
+		{
+			Instance = new Engine();
+		}
+
+		return Instance;
+	}
 
 	World* MyWorld;
 
-	void LoadMap();
+	void LoadMap(std::string MapFilename);
 	void Run();
 
 	void Stop();
@@ -17,5 +34,9 @@ public:
 	void Input();
 
 	bool bIsRunning = true;
+
+	static bool Compare(Actor* F, Actor* S);
 };
 
+
+#define GEngine Engine::GetInstance()

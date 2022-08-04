@@ -6,6 +6,11 @@
 #include "Monster.h"
 #include "Gate.h"
 #include "Floor.h"
+#include <algorithm>
+#include <conio.h>
+
+Engine* Engine::Instance = nullptr;
+
 
 Engine::Engine()
 {
@@ -17,12 +22,12 @@ Engine::~Engine()
 	delete MyWorld;
 }
 
-void Engine::LoadMap()
+void Engine::LoadMap(std::string MapFilename)
 {
 	MyWorld = new World();
 
 	std::ifstream ReadFileStream;
-	ReadFileStream.open("level1.txt");
+	ReadFileStream.open(MapFilename);
 	if (ReadFileStream.is_open())
 	{
 		int Y = 0;
@@ -30,9 +35,9 @@ void Engine::LoadMap()
 		{
 			char Temp[256];
 			ReadFileStream.getline(Temp, 256);
-			
+
 			int X = 0;
-			while (X < strlen(Temp))
+			while (X < (int)strlen(Temp))
 			{
 				if (Temp[X] == '*')
 				{
@@ -57,6 +62,22 @@ void Engine::LoadMap()
 		}
 	}
 	ReadFileStream.close();
+
+	for (int i = 0; i < (int)MyWorld->ActorList.size(); ++i)
+	{
+		for (int j = i; j < (int)MyWorld->ActorList.size(); ++j)
+		{
+			if (MyWorld->ActorList[i]->SortOrder >
+				MyWorld->ActorList[j]->SortOrder)
+			{
+				Actor* Temp = MyWorld->ActorList[i];
+				MyWorld->ActorList[i] = MyWorld->ActorList[j];
+				MyWorld->ActorList[j] = Temp;
+			}
+		} 
+	}
+
+	//std::sort(MyWorld->ActorList.begin(), MyWorld->ActorList.end(), Engine::Compare);
 }
 
 void Engine::Run()
@@ -76,4 +97,10 @@ void Engine::Stop()
 
 void Engine::Input()
 {
+	_getch();
+}
+
+bool Engine::Compare(Actor* F, Actor* S)
+{
+	return F->SortOrder < S->SortOrder;
 }

@@ -1,12 +1,16 @@
 #include "Engine.h"
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <iostream>
 
+using namespace std;
 
-//Simple is best.
 int main()
 {
-	Engine* MyEngine = new Engine();
+	Engine* MyEngine = GEngine;
 
-	MyEngine->LoadMap();
+	MyEngine->LoadMap("level1.txt");
 	MyEngine->Run();
 
 	delete MyEngine;

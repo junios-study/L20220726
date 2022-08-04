@@ -23,5 +23,7 @@ public:
 	virtual void Tick();
 	virtual void Render();
 
+	int SortOrder = 0;
+
 };
 

@@ -8,6 +8,7 @@ public:
 	Player()
 	{
 		Shape = 'P';
+		SortOrder = 3;
 		Location.X = 1;
 		Location.Y = 1;
 	}
@@ -15,6 +16,7 @@ public:
 	Player(int NewX, int NewY)
 	{
 		Shape = 'P';
+		SortOrder = 3;
 
 		Location.X = NewX;
 		Location.Y = NewY;
