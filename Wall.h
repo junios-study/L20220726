@@ -9,12 +9,14 @@ public:
 	{
 		Shape = '*';
 		SortOrder = 2;
+		bCollisionEnabled = true;
 	}
 
 	Wall(int NewX, int NewY)
 	{
 		Shape = '*';
 		SortOrder = 2;
+		bCollisionEnabled = true;
 
 		Location.X = NewX;
 		Location.Y = NewY;

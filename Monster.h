@@ -8,6 +8,7 @@ public:
 	{
 		Shape = 'M';
 		SortOrder = 4;
+		bCollisionEnabled = false;
 
 		Location.X = 6;
 		Location.Y = 6;
@@ -18,6 +19,7 @@ public:
 	{
 		Shape = 'M';
 		SortOrder = 4;
+		bCollisionEnabled = false;
 
 		Location.X = NewX;
 		Location.Y = NewY;
