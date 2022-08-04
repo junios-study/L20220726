@@ -25,5 +25,7 @@ public:
 
 	int SortOrder = 0;
 
+	bool bCollisionEnabled = true;
+
 };
 

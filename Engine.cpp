@@ -65,7 +65,7 @@ void Engine::LoadMap(std::string MapFilename)
 
 	for (int i = 0; i < (int)MyWorld->ActorList.size(); ++i)
 	{
-		for (int j = i; j < (int)MyWorld->ActorList.size(); ++j)
+		for (int j = i + 1; j < (int)MyWorld->ActorList.size(); ++j)
 		{
 			if (MyWorld->ActorList[i]->SortOrder >
 				MyWorld->ActorList[j]->SortOrder)
@@ -74,7 +74,7 @@ void Engine::LoadMap(std::string MapFilename)
 				MyWorld->ActorList[i] = MyWorld->ActorList[j];
 				MyWorld->ActorList[j] = Temp;
 			}
-		} 
+		}
 	}
 
 	//std::sort(MyWorld->ActorList.begin(), MyWorld->ActorList.end(), Engine::Compare);
@@ -97,7 +97,7 @@ void Engine::Stop()
 
 void Engine::Input()
 {
-	_getch();
+	KeyCode = _getch();
 }
 
 bool Engine::Compare(Actor* F, Actor* S)

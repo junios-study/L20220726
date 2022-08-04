@@ -36,6 +36,8 @@ public:
 	bool bIsRunning = true;
 
 	static bool Compare(Actor* F, Actor* S);
+
+	int KeyCode;
 };
 
 

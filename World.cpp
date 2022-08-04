@@ -9,8 +9,10 @@ World::~World()
 {
 	for (auto Current : ActorList)
 	{
-		DestoryActor(Current);
+		delete Current;
 	}
+
+	ActorList.clear();
 }
 
 void World::SpawnActor(Actor* NewActor)

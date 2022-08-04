@@ -24,6 +24,7 @@ public:
 
 	virtual ~Player() {}
 
+	virtual void Tick() override;
 	//virtual void Render() override {} 
 };
 
