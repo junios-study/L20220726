@@ -12,5 +12,6 @@ public:
 	std::vector<Actor*> ActorList;
 
 	void SpawnActor(Actor* NewActor);
+	std::vector<Actor*>::iterator DestoryActor(Actor* DeletedActor);
 };
 
