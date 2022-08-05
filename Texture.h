@@ -5,7 +5,7 @@
 class Texture
 {
 public:
-	Texture(std::string Filename);
+	Texture(std::string Filename, int R = 255, int G = 0, int B = 255);
 	virtual ~Texture();
 
 	SDL_Surface* MySurface;

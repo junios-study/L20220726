@@ -29,6 +29,7 @@ std::vector<Actor*>::iterator World::DestoryActor(Actor* DeletedActor)
 
 void World::Tick()
 {
+	DeltaSeconds = SDL_GetTicks64() - LastTick;
 	for (Actor* MyActor : ActorList)
 	{
 		MyActor->Tick();
@@ -41,6 +42,7 @@ void World::Render()
 	{
 		MyActor->Render();
 	}
+	LastTick = SDL_GetTicks64();
 }
 //[][][][]
 //[]    []         []      []

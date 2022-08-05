@@ -5,6 +5,8 @@
 
 void Player::Tick()
 {
+	ElapsedTime += GEngine->MyWorld->DeltaSeconds;
+
 	if (GEngine->MyEvent.type != SDL_KEYDOWN)
 	{
 		return;
@@ -22,6 +24,7 @@ void Player::Tick()
 		if (Predict(Location.X, Location.Y - 1))
 		{
 			Location.Y--;
+			SpriteIndexY = 2;
 		}
 	}
 	if (KeyCode.sym == SDLK_a)
@@ -29,6 +32,7 @@ void Player::Tick()
 		if (Predict(Location.X - 1, Location.Y))
 		{
 			Location.X--;
+			SpriteIndexY = 0;
 		}
 
 	}
@@ -37,6 +41,7 @@ void Player::Tick()
 		if (Predict(Location.X, Location.Y + 1))
 		{
 			Location.Y++;
+			SpriteIndexY = 3;
 		}
 	}
 	if (KeyCode.sym == SDLK_d)
@@ -44,6 +49,7 @@ void Player::Tick()
 		if (Predict(Location.X + 1, Location.Y))
 		{
 			Location.X++;
+			SpriteIndexY = 1;
 		}
 	}
 
@@ -51,6 +57,32 @@ void Player::Tick()
 	{
 		GEngine->SaveMap("Save.txt");
 	}
+}
+
+void Player::Render()
+{
+	int SpriteWidth = MyTexture->MySurface->w / 5;
+	int SpriteHeight = MyTexture->MySurface->h / 5;
+	
+	
+	SDL_Rect SourceRect = { 
+	SpriteWidth * SpriteIndexX,
+	SpriteHeight * SpriteIndexY,
+	SpriteWidth,
+	SpriteHeight
+	};
+	SDL_Rect Destination = { Location.X * Width, Location.Y * Height,
+		Width, Height };
+	SDL_RenderCopy(GEngine->MyRenderer, MyTexture->MyTexture,
+		&SourceRect,
+		&Destination);
+
+	if (ElapsedTime / 200 >= 1)
+	{
+		SpriteIndexX++;
+		ElapsedTime = 0;
+	}
+	SpriteIndexX %= 5;
 }
 
 bool Player::Predict(int NewX, int NewY)

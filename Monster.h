@@ -29,9 +29,7 @@ public:
 		Location.X = NewX;
 		Location.Y = NewY;
 
-		MyTexture = new Texture("./Data/slime.bmp");
-		SDL_SetColorKey(MyTexture->MySurface, 1,
-			SDL_MapRGB(MyTexture->MySurface->format, 255, 255, 255));
+		MyTexture = new Texture("./Data/slime.bmp", 255, 255, 255);
 	}
 	virtual ~Monster() {}
 };

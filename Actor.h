@@ -45,5 +45,7 @@ public:
 
 	Texture* MyTexture = nullptr;
 
+	Uint64 ElapsedTime;
+
 };
 

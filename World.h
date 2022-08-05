@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "SDL.h"
 
 class Actor;
 
@@ -17,5 +18,8 @@ public:
 
 	void Tick();
 	void Render();
+
+	Uint64 LastTick;
+	Uint64 DeltaSeconds;
 };
 

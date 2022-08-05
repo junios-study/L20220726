@@ -7,7 +7,6 @@
 #include "Gate.h"
 #include "Floor.h"
 #include <algorithm>
-#include <conio.h>
 #include <Windows.h>
 
 Engine* Engine::Instance = nullptr;
@@ -18,7 +17,7 @@ Engine::Engine()
 	MyWorld = nullptr;
 
 	SDL_Init(SDL_INIT_EVERYTHING);
-	MyWindow = SDL_CreateWindow("Game", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
+	MyWindow = SDL_CreateWindow("Game", 100, 100, 600, 600, SDL_WINDOW_OPENGL);
 	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED |
 		SDL_RENDERER_PRESENTVSYNC |
 		SDL_RENDERER_TARGETTEXTURE);

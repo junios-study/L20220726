@@ -24,7 +24,7 @@ public:
 
 		Location.X = NewX;
 		Location.Y = NewY;
-		MyTexture = new Texture("./Data/coin.bmp");
+		MyTexture = new Texture("./Data/coin.bmp", 255, 255, 255);
 
 	}
 	virtual ~Gate() {}
