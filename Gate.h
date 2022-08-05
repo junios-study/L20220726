@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "Texture.h"
 
 class Gate : public Actor
 {
@@ -10,6 +11,7 @@ public:
 		SortOrder = 2;
 		bCollisionEnabled = false;
 		MyColor = { 141, 87, 58, 255 };
+		MyTexture = nullptr;
 	}
 
 	Gate(int NewX, int NewY)
@@ -22,6 +24,8 @@ public:
 
 		Location.X = NewX;
 		Location.Y = NewY;
+		MyTexture = new Texture("./Data/coin.bmp");
+
 	}
 	virtual ~Gate() {}
 };

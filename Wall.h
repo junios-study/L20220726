@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "Texture.h"
 
 
 class Wall : public Actor
@@ -11,6 +12,7 @@ public:
 		SortOrder = 2;
 		bCollisionEnabled = true;
 		MyColor = { 0, 255, 0, 255 };
+		MyTexture = nullptr;
 
 	}
 
@@ -24,6 +26,9 @@ public:
 
 		Location.X = NewX;
 		Location.Y = NewY;
+
+		MyTexture = new Texture("./Data/wall.bmp");
+
 	}
 	virtual ~Wall() {}
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "Texture.h"
 
 class Monster : public Actor
 {
@@ -14,6 +15,7 @@ public:
 
 		Location.X = 6;
 		Location.Y = 6;
+		MyTexture = nullptr;
 	}
 
 
@@ -26,6 +28,10 @@ public:
 
 		Location.X = NewX;
 		Location.Y = NewY;
+
+		MyTexture = new Texture("./Data/slime.bmp");
+		SDL_SetColorKey(MyTexture->MySurface, 1,
+			SDL_MapRGB(MyTexture->MySurface->format, 255, 255, 255));
 	}
 	virtual ~Monster() {}
 };
