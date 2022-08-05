@@ -8,6 +8,7 @@
 #include "Floor.h"
 #include <algorithm>
 #include <conio.h>
+#include <Windows.h>
 
 Engine* Engine::Instance = nullptr;
 
@@ -30,6 +31,34 @@ Engine::~Engine()
 	SDL_DestroyRenderer(MyRenderer);
 	SDL_DestroyWindow(MyWindow);
 	SDL_Quit();
+}
+
+void Engine::SaveMap(std::string MapFilename)
+{
+	std::ofstream OutputFileStream(MapFilename);
+	if (!OutputFileStream.is_open())
+	{
+		return;
+	}
+
+	for (int Y = 0; Y < 10; ++Y)
+	{
+		std::string OutputLine = "            ";
+		for (int X = 0; X < 10; ++X)
+		{
+			for (Actor* CurrentActor : MyWorld->ActorList)
+			{
+				if (CurrentActor->Location.X == X &&
+					CurrentActor->Location.Y == Y)
+				{
+					OutputLine[X] = CurrentActor->Shape;
+				}
+			}
+		}
+		OutputFileStream << OutputLine << '\n';
+	}
+
+	OutputFileStream.close();
 }
 
 void Engine::LoadMap(std::string MapFilename)

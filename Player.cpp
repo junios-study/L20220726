@@ -46,6 +46,11 @@ void Player::Tick()
 			Location.X++;
 		}
 	}
+
+	if (KeyCode.sym == SDLK_p)
+	{
+		GEngine->SaveMap("Save.txt");
+	}
 }
 
 bool Player::Predict(int NewX, int NewY)

@@ -9,10 +9,11 @@ void Actor::Tick()
 
 void Actor::Render()
 {
-    COORD Cur;
-    Cur.X = Location.X;
-    Cur.Y = Location.Y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+    //COORD Cur;
+    //Cur.X = Location.X;
+    //Cur.Y = Location.Y;
+    //SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+    //std::cout << Shape;
 
     //GPU Command Queue 다 그리고 적어 놓기
     SDL_SetRenderDrawColor(GEngine->MyRenderer, MyColor.R, MyColor.G,
@@ -23,5 +24,5 @@ void Actor::Render()
     
 
 
-	std::cout << Shape;
+
 }

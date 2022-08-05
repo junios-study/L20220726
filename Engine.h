@@ -30,7 +30,8 @@ public:
 
 	World* MyWorld;
 
-	void LoadMap(std::string MapFilename);
+	void SaveMap(std::string MapFilename);
+ 	void LoadMap(std::string MapFilename);
 	void Run();
 
 	void Stop();
