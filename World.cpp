@@ -44,9 +44,3 @@ void World::Render()
 	}
 	LastTick = SDL_GetTicks64();
 }
-//[][][][]
-//[]    []         []      []
-
-//[]
-//[]
-//[]
