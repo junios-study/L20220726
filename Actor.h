@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector2D.h"
+#include "Color.h"
 
-//abstract class 
 class Actor
 {
 public:
@@ -26,6 +26,11 @@ public:
 	int SortOrder = 0;
 
 	bool bCollisionEnabled = true;
+
+	Color MyColor;
+	
+	int Width = 60;
+	int Height = 60;
 
 };
 

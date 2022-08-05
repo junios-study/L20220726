@@ -15,11 +15,21 @@ Engine* Engine::Instance = nullptr;
 Engine::Engine()
 {
 	MyWorld = nullptr;
+
+	SDL_Init(SDL_INIT_EVERYTHING);
+	MyWindow = SDL_CreateWindow("Game", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
+	MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED |
+		SDL_RENDERER_PRESENTVSYNC |
+		SDL_RENDERER_TARGETTEXTURE);
 }
 
 Engine::~Engine()
 {
 	delete MyWorld;
+
+	SDL_DestroyRenderer(MyRenderer);
+	SDL_DestroyWindow(MyWindow);
+	SDL_Quit();
 }
 
 void Engine::LoadMap(std::string MapFilename)
@@ -84,9 +94,22 @@ void Engine::Run()
 {
 	while (bIsRunning)
 	{
+		SDL_PollEvent(&MyEvent);
+		switch (MyEvent.type)
+		{
+			case SDL_QUIT:
+				Stop();
+				break;
+			case SDL_KEYDOWN:
+				break;
+		}
 		Input();
 		MyWorld->Tick();
+		//화면 채우기
+		SDL_SetRenderDrawColor(MyRenderer, 0, 0, 0, 255);
+		SDL_RenderClear(MyRenderer);
 		MyWorld->Render();
+		SDL_RenderPresent(MyRenderer);
 	}
 }
 
@@ -97,7 +120,7 @@ void Engine::Stop()
 
 void Engine::Input()
 {
-	KeyCode = _getch();
+	//KeyCode = _getch();
 }
 
 bool Engine::Compare(Actor* F, Actor* S)

@@ -1,5 +1,9 @@
 #pragma once
 #include <string>
+#include "SDL.h"
+
+#pragma comment(lib, "SDL2.lib")
+#pragma comment(lib, "SDL2main.lib")
 
 class World;
 class Actor;
@@ -37,7 +41,11 @@ public:
 
 	static bool Compare(Actor* F, Actor* S);
 
-	int KeyCode;
+	//int KeyCode;
+
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
+	SDL_Event MyEvent;
 };
 
 

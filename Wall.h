@@ -10,6 +10,8 @@ public:
 		Shape = '*';
 		SortOrder = 2;
 		bCollisionEnabled = true;
+		MyColor = { 0, 255, 0, 255 };
+
 	}
 
 	Wall(int NewX, int NewY)
@@ -17,6 +19,8 @@ public:
 		Shape = '*';
 		SortOrder = 2;
 		bCollisionEnabled = true;
+		MyColor = { 0, 255, 0, 255 };
+
 
 		Location.X = NewX;
 		Location.Y = NewY;

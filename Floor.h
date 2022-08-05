@@ -9,12 +9,14 @@ public:
 		Shape = ' ';
 		SortOrder = 1;
 		bCollisionEnabled = false;
+		MyColor = { 128, 128, 128, 255 };
 	}
 	Floor(int NewX, int NewY)
 	{
 		Shape = ' ';
 		SortOrder = 1;
 		bCollisionEnabled = false;
+		MyColor = { 128, 128, 128, 255 };
 
 		Location.X = NewX;
 		Location.Y = NewY;

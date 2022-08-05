@@ -12,6 +12,7 @@ public:
 		Location.X = 1;
 		Location.Y = 1;
 		bCollisionEnabled = false;
+		MyColor = { 0, 0, 255, 255 };
 	}
 
 	Player(int NewX, int NewY)
@@ -19,6 +20,8 @@ public:
 		Shape = 'P';
 		SortOrder = 3;
 		bCollisionEnabled = false;
+		MyColor = { 0, 0, 255, 255 };
+
 
 		Location.X = NewX;
 		Location.Y = NewY;

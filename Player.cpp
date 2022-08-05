@@ -5,19 +5,26 @@
 
 void Player::Tick()
 {
-	if (GEngine->KeyCode == 'Q' || GEngine->KeyCode == 'q')
+	if (GEngine->MyEvent.type != SDL_KEYDOWN)
+	{
+		return;
+	}
+
+	SDL_Keysym KeyCode = GEngine->MyEvent.key.keysym;
+	if (KeyCode.sym == SDLK_q ||
+		KeyCode.sym == SDLK_ESCAPE)
 	{
 		GEngine->Stop();
 	}
 
-	if (GEngine->KeyCode == 'W' || GEngine->KeyCode == 'w')
+	if (KeyCode.sym == SDLK_w)
 	{
 		if (Predict(Location.X, Location.Y - 1))
 		{
 			Location.Y--;
 		}
 	}
-	if (GEngine->KeyCode == 'A' || GEngine->KeyCode == 'a')
+	if (KeyCode.sym == SDLK_a)
 	{
 		if (Predict(Location.X - 1, Location.Y))
 		{
@@ -25,14 +32,14 @@ void Player::Tick()
 		}
 
 	}
-	if (GEngine->KeyCode == 'S' || GEngine->KeyCode == 's')
+	if (KeyCode.sym == SDLK_s)
 	{
 		if (Predict(Location.X, Location.Y + 1))
 		{
 			Location.Y++;
 		}
 	}
-	if (GEngine->KeyCode == 'D' || GEngine->KeyCode == 'd')
+	if (KeyCode.sym == SDLK_d)
 	{
 		if (Predict(Location.X + 1, Location.Y))
 		{
