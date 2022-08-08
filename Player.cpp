@@ -7,6 +7,13 @@ void Player::Tick()
 {
 	ElapsedTime += GEngine->MyWorld->DeltaSeconds;
 
+	if (ElapsedTime / 200 >= 1)
+	{
+		SpriteIndexX++;
+		ElapsedTime = 0;
+	}
+	SpriteIndexX %= 5;
+
 	if (GEngine->MyEvent.type != SDL_KEYDOWN)
 	{
 		return;
@@ -76,26 +83,6 @@ void Player::Render()
 	SDL_RenderCopy(GEngine->MyRenderer, MyTexture->MyTexture,
 		&SourceRect,
 		&Destination);
-
-	if (ElapsedTime / 200 >= 1)
-	{
-		SpriteIndexX++;
-		ElapsedTime = 0;
-	}
-	SpriteIndexX %= 5;
 }
 
-bool Player::Predict(int NewX, int NewY)
-{
-	for (auto CurrentActor : GEngine->MyWorld->ActorList)
-	{
-		if (CurrentActor->bCollisionEnabled &&
-			CurrentActor->Location.X == NewX &&
-			CurrentActor->Location.Y == NewY)
-		{
-			return false;
-		}
-	}
 
-	return true;
-}
